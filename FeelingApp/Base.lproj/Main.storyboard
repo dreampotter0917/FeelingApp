@@ -44,7 +44,11 @@
                                                 <action selector="cancel:" destination="90d-sY-50m" id="uTZ-08-F2k"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="保存" id="0up-Ck-piY"/>
+                                        <barButtonItem key="rightBarButtonItem" title="保存" id="0up-Ck-piY">
+                                            <connections>
+                                                <action selector="save:" destination="90d-sY-50m" id="kQQ-Un-1NO"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

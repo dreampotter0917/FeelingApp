@@ -7,8 +7,12 @@
 
 import UIKit
 import FSCalendar
+import RealmSwift
 
 class ResisterViewController: UIViewController {
+    
+    let realm = try!Realm()
+    
 //    日付を表示
     @IBOutlet var dateLabel:UILabel!
     
@@ -57,6 +61,12 @@ class ResisterViewController: UIViewController {
     
 //    キャンセルボタン
     @IBAction func cancel(_ sender: Any){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+//    保存ボタン
+    @IBAction func save(_ sender: Any){
+        print("保存しました")
         self.dismiss(animated: true, completion: nil)
     }
     

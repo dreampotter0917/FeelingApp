@@ -14,6 +14,9 @@
 		AC02B38029B39C7B009A4790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC02B37F29B39C7B009A4790 /* Assets.xcassets */; };
 		AC02B38329B39C7B009A4790 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC02B38129B39C7B009A4790 /* LaunchScreen.storyboard */; };
 		AC552BB229B491F200EAB539 /* ResisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC552BB129B491F200EAB539 /* ResisterViewController.swift */; };
+		AC552BB729B4ED0300EAB539 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AC552BB629B4ED0300EAB539 /* Realm */; };
+		AC552BB929B4ED0300EAB539 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC552BB829B4ED0300EAB539 /* RealmSwift */; };
+		AC552BBB29B4EEC700EAB539 /* Feeling.File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC552BBA29B4EEC700EAB539 /* Feeling.File.swift */; };
 		CDC31A00B416F30670DADD31 /* Pods_FeelingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E6FF3C44F86305D73901D0 /* Pods_FeelingApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,7 @@
 		AC02B38229B39C7B009A4790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC02B38429B39C7B009A4790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC552BB129B491F200EAB539 /* ResisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResisterViewController.swift; sourceTree = "<group>"; };
+		AC552BBA29B4EEC700EAB539 /* Feeling.File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.File.swift; sourceTree = "<group>"; };
 		C9D80DB81B922FCF406DB19F /* Pods-FeelingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelingApp.release.xcconfig"; path = "Target Support Files/Pods-FeelingApp/Pods-FeelingApp.release.xcconfig"; sourceTree = "<group>"; };
 		F4E6FF3C44F86305D73901D0 /* Pods_FeelingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -37,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC552BB929B4ED0300EAB539 /* RealmSwift in Frameworks */,
+				AC552BB729B4ED0300EAB539 /* Realm in Frameworks */,
 				CDC31A00B416F30670DADD31 /* Pods_FeelingApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +92,7 @@
 				AC02B37829B39C79009A4790 /* SceneDelegate.swift */,
 				AC02B37A29B39C79009A4790 /* ViewController.swift */,
 				AC552BB129B491F200EAB539 /* ResisterViewController.swift */,
+				AC552BBA29B4EEC700EAB539 /* Feeling.File.swift */,
 				AC02B37C29B39C79009A4790 /* Main.storyboard */,
 				AC02B37F29B39C7B009A4790 /* Assets.xcassets */,
 				AC02B38129B39C7B009A4790 /* LaunchScreen.storyboard */,
@@ -112,6 +119,10 @@
 			dependencies = (
 			);
 			name = FeelingApp;
+			packageProductDependencies = (
+				AC552BB629B4ED0300EAB539 /* Realm */,
+				AC552BB829B4ED0300EAB539 /* RealmSwift */,
+			);
 			productName = FeelingApp;
 			productReference = AC02B37329B39C79009A4790 /* FeelingApp.app */;
 			productType = "com.apple.product-type.application";
@@ -140,6 +151,9 @@
 				Base,
 			);
 			mainGroup = AC02B36A29B39C79009A4790;
+			packageReferences = (
+				AC552BB529B4ED0300EAB539 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = AC02B37429B39C79009A4790 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -211,6 +225,7 @@
 			files = (
 				AC02B37B29B39C79009A4790 /* ViewController.swift in Sources */,
 				AC02B37729B39C79009A4790 /* AppDelegate.swift in Sources */,
+				AC552BBB29B4EEC700EAB539 /* Feeling.File.swift in Sources */,
 				AC02B37929B39C79009A4790 /* SceneDelegate.swift in Sources */,
 				AC552BB229B491F200EAB539 /* ResisterViewController.swift in Sources */,
 			);
@@ -430,6 +445,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC552BB529B4ED0300EAB539 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AC552BB629B4ED0300EAB539 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC552BB529B4ED0300EAB539 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		AC552BB829B4ED0300EAB539 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC552BB529B4ED0300EAB539 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AC02B36B29B39C79009A4790 /* Project object */;
 }
