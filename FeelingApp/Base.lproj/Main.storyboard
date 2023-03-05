@@ -126,7 +126,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="sigotobuttonTappedWithSender:" destination="90d-sY-50m" eventType="touchUpInside" id="UbQ-Zq-pRo"/>
+                                    <action selector="sigotobuttonTappedWithSender:" destination="90d-sY-50m" eventType="touchUpInside" id="tfU-CI-x3e"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyy-kf-Z3J">
@@ -144,7 +144,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="asobibuttonTappedWithSender:" destination="90d-sY-50m" eventType="touchUpInside" id="RBe-GW-BGR"/>
+                                    <action selector="asobibuttonTappedWithSender:" destination="90d-sY-50m" eventType="touchUpInside" id="MnW-6H-VD8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NY1-96-55Z">
@@ -162,7 +162,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="sakurubuttonTappedWithSender:" destination="90d-sY-50m" eventType="touchUpInside" id="IUU-q7-mnF"/>
+                                    <action selector="sakurubuttonTappedWithSender:" destination="90d-sY-50m" eventType="touchUpInside" id="QGk-6p-vcK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wf-it-0BM">
@@ -180,7 +180,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="baitobuttonTappedWithSender:" destination="90d-sY-50m" eventType="touchUpInside" id="4dd-Wq-gRt"/>
+                                    <action selector="baitobuttonTappedWithSender:" destination="90d-sY-50m" eventType="touchUpInside" id="3po-Te-l3s"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5e-uB-Y4O">
@@ -198,7 +198,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="sonotabuttonTappedWithSender:" destination="90d-sY-50m" eventType="touchUpInside" id="AVS-hc-k2F"/>
+                                    <action selector="sonotabuttonTappedWithSender:" destination="90d-sY-50m" eventType="touchUpInside" id="qIi-YY-f22"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="しゅん" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJ2-eX-qt5">
@@ -232,7 +232,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1D-1b-Q44">
                                 <rect key="frame" x="70" y="248" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.91372549020000005" green="0.76470588240000004" blue="0.71764705880000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.59215686274509804" blue="0.67843137254901964" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <userDefinedRuntimeAttributes>

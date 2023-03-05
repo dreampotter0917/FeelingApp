@@ -13,7 +13,10 @@ import RealmSwift
 
 class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate{
     
+    let df = DateFormatter()
+    
     @IBOutlet  weak var calendar: FSCalendar!
+    
     
     
     
@@ -31,7 +34,6 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate{
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
 //        df.dateFormat = "yyyy-MM-dd"
-//        label.text = df.string(from: date)
         
 //        遷移させたい
         let storyboard: UIStoryboard = self.storyboard!
@@ -41,11 +43,7 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate{
     }
     
 }
-//
-//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//
-//        self.performSegue(withIdentifier: "toRegister", sender: nil)
-//    }
+
 
 
 
