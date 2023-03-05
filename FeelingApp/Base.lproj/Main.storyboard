@@ -341,6 +341,7 @@
                         <outlet property="asobibutton" destination="Oyy-kf-Z3J" id="oby-lh-nVg"/>
                         <outlet property="baitobutton" destination="6wf-it-0BM" id="GPC-Nz-qPB"/>
                         <outlet property="dateLabel" destination="wUi-DK-klS" id="RU1-md-sqx"/>
+                        <outlet property="detailTextField" destination="8pO-OH-Pdk" id="D11-vA-GHJ"/>
                         <outlet property="feeling1button" destination="L1D-1b-Q44" id="pOx-l1-3r9"/>
                         <outlet property="feeling2button" destination="SgF-4O-bnM" id="UyH-8Y-tiH"/>
                         <outlet property="feeling3button" destination="KxF-jY-jqF" id="abp-rD-pIe"/>

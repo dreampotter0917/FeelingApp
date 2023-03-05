@@ -8,8 +8,8 @@
 import Foundation
 import RealmSwift
 
-class Feeingitem:Object {
-    @Persisted var feeling: Int = 0
+class FeeingItem:Object {
+    @Persisted var feeling: Int8 = 0
     @Persisted var dekigoto: Int8 = 0
     @Persisted var detail: String = ""
     

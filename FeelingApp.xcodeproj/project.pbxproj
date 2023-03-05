@@ -16,7 +16,7 @@
 		AC552BB229B491F200EAB539 /* ResisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC552BB129B491F200EAB539 /* ResisterViewController.swift */; };
 		AC552BB729B4ED0300EAB539 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AC552BB629B4ED0300EAB539 /* Realm */; };
 		AC552BB929B4ED0300EAB539 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC552BB829B4ED0300EAB539 /* RealmSwift */; };
-		AC552BBB29B4EEC700EAB539 /* Feeling.File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC552BBA29B4EEC700EAB539 /* Feeling.File.swift */; };
+		AC552BBB29B4EEC700EAB539 /* FeelingItem.File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC552BBA29B4EEC700EAB539 /* FeelingItem.File.swift */; };
 		CDC31A00B416F30670DADD31 /* Pods_FeelingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E6FF3C44F86305D73901D0 /* Pods_FeelingApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +31,7 @@
 		AC02B38229B39C7B009A4790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC02B38429B39C7B009A4790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC552BB129B491F200EAB539 /* ResisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResisterViewController.swift; sourceTree = "<group>"; };
-		AC552BBA29B4EEC700EAB539 /* Feeling.File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.File.swift; sourceTree = "<group>"; };
+		AC552BBA29B4EEC700EAB539 /* FeelingItem.File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingItem.File.swift; sourceTree = "<group>"; };
 		C9D80DB81B922FCF406DB19F /* Pods-FeelingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelingApp.release.xcconfig"; path = "Target Support Files/Pods-FeelingApp/Pods-FeelingApp.release.xcconfig"; sourceTree = "<group>"; };
 		F4E6FF3C44F86305D73901D0 /* Pods_FeelingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -92,7 +92,7 @@
 				AC02B37829B39C79009A4790 /* SceneDelegate.swift */,
 				AC02B37A29B39C79009A4790 /* ViewController.swift */,
 				AC552BB129B491F200EAB539 /* ResisterViewController.swift */,
-				AC552BBA29B4EEC700EAB539 /* Feeling.File.swift */,
+				AC552BBA29B4EEC700EAB539 /* FeelingItem.File.swift */,
 				AC02B37C29B39C79009A4790 /* Main.storyboard */,
 				AC02B37F29B39C7B009A4790 /* Assets.xcassets */,
 				AC02B38129B39C7B009A4790 /* LaunchScreen.storyboard */,
@@ -225,7 +225,7 @@
 			files = (
 				AC02B37B29B39C79009A4790 /* ViewController.swift in Sources */,
 				AC02B37729B39C79009A4790 /* AppDelegate.swift in Sources */,
-				AC552BBB29B4EEC700EAB539 /* Feeling.File.swift in Sources */,
+				AC552BBB29B4EEC700EAB539 /* FeelingItem.File.swift in Sources */,
 				AC02B37929B39C79009A4790 /* SceneDelegate.swift in Sources */,
 				AC552BB229B491F200EAB539 /* ResisterViewController.swift in Sources */,
 			);
