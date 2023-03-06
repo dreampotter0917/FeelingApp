@@ -9,13 +9,18 @@ import UIKit
 import FSCalendar
 import RealmSwift
 
-class ResisterViewController: UIViewController {
+class ResigterViewController: UIViewController {
     
     let realm = try!Realm()
     
+    
+    
+
 //    日付を表示
     @IBOutlet var dateLabel:UILabel!
+    var dateValue :String?
     
+//    ここから入力画面
 //    気持ちを表示
     @IBOutlet weak var feeling1button:UIButton!
     @IBOutlet weak var feeling2button:UIButton!
@@ -61,7 +66,7 @@ class ResisterViewController: UIViewController {
     let color1 :UIColor = UIColor(red: 224/255, green: 151/255, blue: 173/255, alpha: 1.0)
     let color2 :UIColor = UIColor(red: 212/255, green: 186/255, blue: 216/255, alpha: 1.0)
     let color3 :UIColor = UIColor(red: 200/255, green: 212/255, blue: 180/255, alpha: 1.0)
-    let color4 :UIColor = UIColor(red: 208/255, green: 228/255, blue: 234/255, alpha: 1.0)
+    let color4 :UIColor = UIColor(red: 155/255, green: 201/255, blue: 241/255, alpha: 1.0)
     let color5 :UIColor = UIColor(red: 111/255, green: 152/255, blue: 169/255, alpha: 1.0)
     let color6 :UIColor = UIColor(red: 0/255, green: 54/255, blue: 130/255, alpha: 1.0)
     
@@ -69,15 +74,15 @@ class ResisterViewController: UIViewController {
 //    詳細を表示
     @IBOutlet var detailTextField: UITextField!
     
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        気分ボタンの色
-        feeling1button.backgroundColor = color1.withAlphaComponent(0.4)
-        feeling2button.backgroundColor = color2.withAlphaComponent(0.4)
-        feeling3button.backgroundColor = color3.withAlphaComponent(0.4)
-        feeling4button.backgroundColor = color4.withAlphaComponent(0.4)
-        feeling5button.backgroundColor = color5.withAlphaComponent(0.2)
-        feeling6button.backgroundColor = color6.withAlphaComponent(0.2)
+        
+        dateLabel.text = dateValue
+//        
     }
     
 //    キャンセルボタン
@@ -87,24 +92,27 @@ class ResisterViewController: UIViewController {
     
 //    保存したい
     
-    func createFeeling(item: FeeingItem){
+    
+    func createFeeling(item: FeelingItem){
+        
+        
         try! realm.write {
             realm.add(item)
         }
     }
     
     @IBAction func save(_ sender: Any){
-
-        let item = FeeingItem()
+        let item = FeelingItem()
         item.feeling = feeling
         item.dekigoto = dekigoto
         item.detail = detailTextField.text ?? ""
-        
+        item.date = dateLabel.text ?? ""
         createFeeling(item: item)
-        
-        
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+
     
 //    気分ボタンを押したら透明度が変わる
     @IBAction func feeling1buttonTapped(sender: AnyObject) {
@@ -137,6 +145,46 @@ class ResisterViewController: UIViewController {
         setFeelingButtonColor()
     }
     
+    
+    
+func setFeelingButtonColor(){
+    
+    if feeling & 0b100000 == 0b100000 {
+        feeling1button.backgroundColor = color1.withAlphaComponent(1.0)
+    } else {
+        feeling1button.backgroundColor = color1.withAlphaComponent(0.4)
+    }
+    
+    if feeling & 0b010000 == 0b010000 {
+        feeling2button.backgroundColor = color2.withAlphaComponent(1.0)
+    } else {
+        feeling2button.backgroundColor = color2.withAlphaComponent(0.4)
+    }
+    
+    if feeling & 0b001000 == 0b001000 {
+        feeling3button.backgroundColor = color3.withAlphaComponent(1.0)
+    } else {
+        feeling3button.backgroundColor = color3.withAlphaComponent(0.4)
+    }
+    
+    if feeling & 0b000100 == 0b000100 {
+        feeling4button.backgroundColor = color4.withAlphaComponent(1.0)
+    } else {
+        feeling4button.backgroundColor = color4.withAlphaComponent(0.4)
+    }
+    
+    if feeling & 0b000010 == 0b000010 {
+        feeling5button.backgroundColor = color5.withAlphaComponent(1.0)
+    } else {
+        feeling5button.backgroundColor = color5.withAlphaComponent(0.2)
+    }
+    
+    if feeling & 0b000001 == 0b000001 {
+        feeling6button.backgroundColor = color6.withAlphaComponent(1.0)
+    } else {
+        feeling6button.backgroundColor = color6.withAlphaComponent(0.2)
+    }
+}
     //    出来事ボタンを押したら色が変わる
         @IBAction func zyugyoubuttonTapped(sender: AnyObject) {
             if isZyugyouSelected {
@@ -216,43 +264,7 @@ class ResisterViewController: UIViewController {
                 dekigoto |= 0b000001
             }
         }
-        
-    func setFeelingButtonColor(){
-        
-        if feeling & 0b100000 == 0b100000 {
-            feeling1button.backgroundColor = color1.withAlphaComponent(1.0)
-        } else {
-            feeling1button.backgroundColor = color1.withAlphaComponent(0.4)
-        }
-        
-        if feeling & 0b010000 == 0b010000 {
-            feeling2button.backgroundColor = color2.withAlphaComponent(1.0)
-        } else {
-            feeling2button.backgroundColor = color2.withAlphaComponent(0.4)
-        }
-        
-        if feeling & 0b001000 == 0b001000 {
-            feeling3button.backgroundColor = color3.withAlphaComponent(1.0)
-        } else {
-            feeling3button.backgroundColor = color3.withAlphaComponent(0.4)
-        }
-        
-        if feeling & 0b000100 == 0b000100 {
-            feeling4button.backgroundColor = color4.withAlphaComponent(1.0)
-        } else {
-            feeling4button.backgroundColor = color4.withAlphaComponent(0.4)
-        }
-        
-        if feeling & 0b000010 == 0b000010 {
-            feeling5button.backgroundColor = color5.withAlphaComponent(1.0)
-        } else {
-            feeling5button.backgroundColor = color5.withAlphaComponent(0.2)
-        }
-        
-        if feeling & 0b000001 == 0b000001 {
-            feeling6button.backgroundColor = color6.withAlphaComponent(1.0)
-        } else {
-            feeling6button.backgroundColor = color6.withAlphaComponent(0.2)
-        }
-    }
+    
+    
+    
 }
