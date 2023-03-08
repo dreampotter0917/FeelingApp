@@ -348,7 +348,7 @@
                         <outlet property="asobibutton" destination="Oyy-kf-Z3J" id="oby-lh-nVg"/>
                         <outlet property="baitobutton" destination="6wf-it-0BM" id="GPC-Nz-qPB"/>
                         <outlet property="dateLabel" destination="wUi-DK-klS" id="RU1-md-sqx"/>
-                        <outlet property="detailTextField" destination="8pO-OH-Pdk" id="D11-vA-GHJ"/>
+                        <outlet property="detailTextField" destination="8pO-OH-Pdk" id="A26-lk-jZS"/>
                         <outlet property="feeling1button" destination="L1D-1b-Q44" id="pOx-l1-3r9"/>
                         <outlet property="feeling2button" destination="SgF-4O-bnM" id="UyH-8Y-tiH"/>
                         <outlet property="feeling3button" destination="KxF-jY-jqF" id="abp-rD-pIe"/>
@@ -356,6 +356,7 @@
                         <outlet property="feeling5button" destination="jd5-Ol-e27" id="9dl-gu-6r8"/>
                         <outlet property="feeling6button" destination="A5M-Vx-ZUl" id="baZ-Qk-qAU"/>
                         <outlet property="sakurubutton" destination="NY1-96-55Z" id="3ff-ik-98i"/>
+                        <outlet property="saveButton" destination="0up-Ck-piY" id="WUU-3c-LE2"/>
                         <outlet property="sigotobutton" destination="kd2-fa-JZU" id="UE7-Dw-XLo"/>
                         <outlet property="sonotabutton" destination="i5e-uB-Y4O" id="imy-5z-9uI"/>
                         <outlet property="zyugyoubutton" destination="eNt-gM-S5W" id="hBQ-iu-ur0"/>

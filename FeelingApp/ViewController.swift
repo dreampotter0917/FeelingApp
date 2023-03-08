@@ -12,12 +12,13 @@ import RealmSwift
 
 
 class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate{
-    
+    let realm = try!Realm()
    
     @IBOutlet  weak var calendar: FSCalendar!
     
     var label:UILabel!
     let df = DateFormatter()
+    
     
 //    let eventArray = ["2023-03-04","2023-03-21","2023-03-18"]
     
@@ -38,7 +39,12 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate{
 //        TOPには表示したくない↓
 //        view.addSubview(label)
 
-//       
+//
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let ResisterViewController = segue.destination as! ResigterViewController
+        ResisterViewController.item = sender as? FeelingItem
     }
     
     
@@ -67,10 +73,12 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate{
         let storyboard: UIStoryboard = self.storyboard!
         let register = storyboard.instantiateViewController(withIdentifier: "register")as!ResigterViewController
         register.dateValue = self.label.text
+        register.item = realm.object(ofType: FeelingItem.self, forPrimaryKey: label.text)
         
 //      消える
         self.present(register, animated: true, completion: nil)
         
+        performSegue(withIdentifier: "toResister", sender: FeelingItem.self)
     }
     
 }

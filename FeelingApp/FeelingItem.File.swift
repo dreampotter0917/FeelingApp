@@ -14,9 +14,17 @@ class FeelingItem:Object {
     @Persisted var dekigoto: Int8 = 0
     @Persisted var detail: String = ""
     
+//    convenience init(date: String, feeling: Int8, dekigoto: Int8, detail: String) {
+//        self.init()
+//        self.date = date
+//        self.feeling = feeling
+//        self.dekigoto = dekigoto
+//        self.detail = detail
+//    }
+    
 //    プライマリーキーを設定
-    open var primaryKey: String {
-            return "date"
-       }
+    override static func primaryKey() -> String? {
+        return "date"
+    }
     
 }

@@ -11,6 +11,10 @@ import RealmSwift
 
 class ResigterViewController: UIViewController {
     
+    var item: FeelingItem? = nil
+    
+    @IBOutlet var saveButton: UIBarButtonItem!
+    
     let realm = try!Realm()
     
     
@@ -82,7 +86,47 @@ class ResigterViewController: UIViewController {
         super.viewDidLoad()
         
         dateLabel.text = dateValue
-//        
+//
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let item {
+            
+            feeling = item.feeling
+            setFeelingButtonColor()
+            
+            dekigoto = item.dekigoto
+            if dekigoto & 0b100000 == 0b100000 {
+                zyugyoubutton.backgroundColor = isSelectedColor
+                isZyugyouSelected = true
+            }
+            if dekigoto & 0b010000 == 0b010000 {
+                baitobutton.backgroundColor = isSelectedColor
+                isBaitoSelected = true
+            }
+            if dekigoto & 0b001000 == 0b001000 {
+                sakurubutton.backgroundColor = isSelectedColor
+                isSakuruSelected = true
+            }
+            if dekigoto & 0b000100 == 0b000100 {
+                sigotobutton.backgroundColor = isSelectedColor
+                isSigotoSelected = true
+            }
+            if dekigoto & 0b000010 == 0b000010 {
+                asobibutton.backgroundColor = isSelectedColor
+                isAsobiSelected = true
+            }
+            if dekigoto & 0b000001 == 0b000001 {
+                sonotabutton.backgroundColor = isSelectedColor
+                isSonotaSelected = true
+            }
+            
+            detailTextField.text = item.detail
+            
+            saveButton.title = "保存"
+        } else {
+            saveButton.title = "保存"
+        }
     }
     
 //    キャンセルボタン
@@ -95,10 +139,10 @@ class ResigterViewController: UIViewController {
     
     func createFeeling(item: FeelingItem){
         
-        
         try! realm.write {
-            realm.add(item)
+            realm.add(item, update: .modified)
         }
+        
     }
     
     @IBAction func save(_ sender: Any){
