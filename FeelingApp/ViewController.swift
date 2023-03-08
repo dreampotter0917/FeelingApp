@@ -20,10 +20,37 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate{
     let df = DateFormatter()
     
     
-//    let eventArray = ["2023-03-04","2023-03-21","2023-03-18"]
+    let eventArray = ["2023-03-04","2023-03-21","2023-03-18"]
     
     
+//    丸ポチをつけたーい！
+//    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
+//        let cell = calendar.dequeueReusableCell(withIdentifier: "cell", for: date, at: position)
+//        let realm = try! Realm()
+//        let result = realm.objects(FeelingItem.self).filter("arunasi == true")
+//        // cellのデザインを変更
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy/MM/dd"
+//        let da = formatter.string(from: date)
+//        for day in result{
+//        if da == day.date{
+//        cell.backgroundColor = UIColor.red
+//        }
+//        }
+//        return cell
+//        }
     
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let realm = try!Realm()
+        let result = realm.objects(FeelingItem.self).filter("arunasi == true")
+        print(result[0]["date"])
+        print(result)
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +77,13 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate{
     
     
 //    日付の下にまるぽち
-//    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-//        df.dateFormat = "yyyy-MM-dd"
-//        if eventArray.first(where: { $0 == df.string(from: date) }) != nil {
-//                return 1
-//        }
-//        return 0
-//    }
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        df.dateFormat = "yyyy-MM-dd"
+        if eventArray.first(where: { $0 == df.string(from: date) }) != nil {
+                return 1
+        }
+        return 0
+    }
     
     
 //    カレンダーの日付がタップされた時の処理

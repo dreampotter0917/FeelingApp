@@ -13,6 +13,7 @@ class FeelingItem:Object {
     @Persisted var feeling: Int8 = 0
     @Persisted var dekigoto: Int8 = 0
     @Persisted var detail: String = ""
+    @Persisted var arunasi: Bool = false
     
 //    convenience init(date: String, feeling: Int8, dekigoto: Int8, detail: String) {
 //        self.init()

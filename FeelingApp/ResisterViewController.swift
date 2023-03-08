@@ -151,6 +151,7 @@ class ResigterViewController: UIViewController {
         item.dekigoto = dekigoto
         item.detail = detailTextField.text ?? ""
         item.date = dateLabel.text ?? ""
+        item.arunasi = true
         createFeeling(item: item)
         self.dismiss(animated: true, completion: nil)
     }
