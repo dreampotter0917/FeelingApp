@@ -12,6 +12,7 @@ import RealmSwift
 class ResigterViewController: UIViewController {
     
     var item: FeelingItem? = nil
+    var selectedDate : Date?
     
     @IBOutlet var saveButton: UIBarButtonItem!
     
@@ -152,6 +153,7 @@ class ResigterViewController: UIViewController {
         item.detail = detailTextField.text ?? ""
         item.date = dateLabel.text ?? ""
         item.arunasi = true
+        item.selectDate = selectedDate!
         createFeeling(item: item)
         self.dismiss(animated: true, completion: nil)
     }

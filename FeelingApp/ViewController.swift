@@ -18,40 +18,18 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate,F
     
     var label:UILabel!
     let df = DateFormatter()
+    var dateFormatter1: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
+    
+    var dateArray:[String] = []
+    
+    var fillDefaultColors:[String:Int8] = [:]
     
     
-    var datesWithStatus: Set<Bool> = []
-    var checkWithStatus: Set<Bool> = [true]
     
-    
-    //    丸ポチをつけたーい！
-    //    func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
-    //        let cell = calendar.dequeueReusableCell(withIdentifier: "cell", for: date, at: position)
-    //        let realm = try! Realm()
-    //        let result = realm.objects(FeelingItem.self).filter("arunasi == true")
-    //        // cellのデザインを変更
-    //        let formatter = DateFormatter()
-    //        formatter.dateFormat = "yyyy/MM/dd"
-    //        let da = formatter.string(from: date)
-    //        for day in result{
-    //        if da == day.date{
-    //        cell.backgroundColor = UIColor.red
-    //        }
-    //        }
-    //        return cell
-    //        }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let realm = try!Realm()
-        let result = realm.objects(FeelingItem.self).filter("arunasi == true")
-        print(result[0]["date"])
-        print(result)
-        
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,54 +48,43 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate,F
         //
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let realm = try!Realm()
+        let result = realm.objects(FeelingItem.self).filter("arunasi == true")
+        
+       
+        if result.count == 0{}
+        else{
+            for i in 0...result.count-1{
+    //            print(i)
+    //            print(fillDefaultColors)
+                fillDefaultColors[result[i]["date"] as! String] = result[i]["feeling"] as! Int8
+            }
+            
+        }
+       
+        print(fillDefaultColors)
+        
+        
+        
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let ResisterViewController = segue.destination as! ResigterViewController
         ResisterViewController.item = sender as? FeelingItem
     }
     
     
-    
-    // UIImageのリサイズ
-    
-    
-    
-    //    日付の下にまるぽち
-    
-   
-    private func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> UIImage?{
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        let calendarDay = formatter.string(from: date)
-        
-        let tanosi = UIImage(named: "tanosi")
-        let Resize:CGSize = CGSize.init(width: 18, height: 30) // サイズ指定
-        let tanosiResize = tanosi?.resize(size: Resize)
-        
-        let realm = try! Realm()
-        // 参照（全データを取得）
-        let feeling = realm.objects(FeelingItem.self).filter("dateString == '\(calendarDay)'")
-        
-        if feeling.count > 0 {
-            for i in 0..<feeling.count {
-                if i == 0 {
-                    datesWithStatus = [feeling[i].arunasi]
-                } else {
-                    datesWithStatus.insert(feeling[i].arunasi)
-                }
-            }
-        } else {
-            datesWithStatus = []
-        }
-        if datesWithStatus == checkWithStatus {
-                   return tanosiResize
-               }
-               return nil
-           }
-    
-
-
-    
+    //    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+    //        let key = self.dateFormatter1.string(from: date)
+    //        if let color = self.fillDefaultColors[key] {
+    //            return color
+    //        }
+    //        return nil
+    //    }
     
     
     //    カレンダーの日付がタップされた時の処理
@@ -128,12 +95,16 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate,F
         let year  = tmpDate.component(.year, from: date)
         let month = tmpDate.component(.month, from: date)
         let day = tmpDate.component(.day, from: date)
+        
+        
+        print(date)
         label.text = "\(year)年\(month)月\(day)日"
         
         //    タップで遷移させたい
         let storyboard: UIStoryboard = self.storyboard!
         let register = storyboard.instantiateViewController(withIdentifier: "register")as!ResigterViewController
         register.dateValue = self.label.text
+        register.selectedDate = date
         register.item = realm.object(ofType: FeelingItem.self, forPrimaryKey: label.text)
         
         //      消える

@@ -14,6 +14,7 @@ class FeelingItem:Object {
     @Persisted var dekigoto: Int8 = 0
     @Persisted var detail: String = ""
     @Persisted var arunasi: Bool = false
+    @Persisted var selectDate:Date = Date()
     
 //    convenience init(date: String, feeling: Int8, dekigoto: Int8, detail: String) {
 //        self.init()
