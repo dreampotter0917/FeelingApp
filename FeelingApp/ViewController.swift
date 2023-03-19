@@ -11,7 +11,7 @@ import RealmSwift
 
 
 
-class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance{
+class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance,UIAdaptivePresentationControllerDelegate {
     let realm = try!Realm()
     
     @IBOutlet  weak var calendar: FSCalendar!
@@ -26,7 +26,14 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate,F
     
     var dateArray:[String] = []
     
-    var fillDefaultColors:[String:Int8] = [:]
+    var fillDefaultColors:[String:UIColor] = [:]
+    
+    let color1 :UIColor = UIColor(red: 224/255, green: 151/255, blue: 173/255, alpha: 1.0)
+    let color2 :UIColor = UIColor(red: 212/255, green: 186/255, blue: 216/255, alpha: 1.0)
+    let color3 :UIColor = UIColor(red: 200/255, green: 212/255, blue: 180/255, alpha: 1.0)
+    let color4 :UIColor = UIColor(red: 155/255, green: 201/255, blue: 241/255, alpha: 1.0)
+    let color5 :UIColor = UIColor(red: 111/255, green: 152/255, blue: 169/255, alpha: 1.0)
+    let color6 :UIColor = UIColor(red: 0/255, green: 54/255, blue: 130/255, alpha: 1.0)
     
     
     
@@ -49,8 +56,63 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate,F
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        print("もどってきた")
+        setBGColor()
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let ResisterViewController = segue.destination as! RegisterViewController
+        ResisterViewController.item = sender as? FeelingItem
+    }
+    
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+        let key = self.dateFormatter1.string(from: date)
+        if let color = self.fillDefaultColors[key] {
+            return color
+        }
+        return nil
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
+        return .clear
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleSelectionColorFor date: Date) -> UIColor? {
+        return UIColor.black
+    }
+    
+    //    カレンダーの日付がタップされた時の処理
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
+        //        その日付を取得
+        let df = DateFormatter()
+        df.calendar = Calendar(identifier: .gregorian)
+        df.locale = Locale(identifier: "ja_JP")
+        df.dateStyle = .medium
+        df.timeStyle = .none
+        let dateStr = df.string(from: date)
+        
+        label.text = dateStr
+        print(dateStr)
+        
+        //    タップで遷移させたい
+        let storyboard: UIStoryboard = self.storyboard!
+        let registerVC = storyboard.instantiateViewController(withIdentifier: "register") as! RegisterViewController
+        registerVC.dateValue = dateStr
+        registerVC.selectedDate = date
+//        registerVC.presentationController?.delegate = self
+        registerVC.item = realm.object(ofType: FeelingItem.self, forPrimaryKey: dateStr)
+        
+        self.navigationController?.pushViewController(registerVC, animated: true)
+//        self.present(registerVC, animated: true, completion: nil)
+        
+//        performSegue(withIdentifier: "toRegister", sender: FeelingItem.self)
+    }
+    
+    func setBGColor(){
         let realm = try!Realm()
         let result = realm.objects(FeelingItem.self).filter("arunasi == true")
         
@@ -58,59 +120,36 @@ class ViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate,F
         if result.count == 0{}
         else{
             for i in 0...result.count-1{
-    //            print(i)
-    //            print(fillDefaultColors)
-                fillDefaultColors[result[i]["date"] as! String] = result[i]["feeling"] as! Int8
+//                print(i)
+//                print(fillDefaultColors)
+                let feeling:Int8 = result[i]["feeling"] as! Int8
+                var feelingColor:UIColor!
+               
+                
+                if feeling & 0b100000 == 0b100000 {
+                    feelingColor = color1.withAlphaComponent(1.0)
+                }
+                
+                if feeling & 0b010000 == 0b010000 {
+                    feelingColor = color2.withAlphaComponent(1.0)
+                }
+                
+                if feeling & 0b001000 == 0b001000 {
+                    feelingColor = color3.withAlphaComponent(1.0)
+                }
+                if feeling & 0b000100 == 0b000100 {
+                    feelingColor = color4.withAlphaComponent(1.0)
+                }
+                if feeling & 0b000010 == 0b000010 {
+                    feelingColor = color5.withAlphaComponent(1.0)
+                }
+                if feeling & 0b000001 == 0b000001 {
+                    feelingColor = color6.withAlphaComponent(1.0)
+                }
+                
+                fillDefaultColors[result[i]["date"] as! String] = feelingColor
             }
-            
         }
-       
-        print(fillDefaultColors)
-        
-        
-        
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let ResisterViewController = segue.destination as! ResigterViewController
-        ResisterViewController.item = sender as? FeelingItem
-    }
-    
-    
-    //    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-    //        let key = self.dateFormatter1.string(from: date)
-    //        if let color = self.fillDefaultColors[key] {
-    //            return color
-    //        }
-    //        return nil
-    //    }
-    
-    
-    //    カレンダーの日付がタップされた時の処理
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        //        その日付を取得
-        let tmpDate = Calendar(identifier: .gregorian)
-        let year  = tmpDate.component(.year, from: date)
-        let month = tmpDate.component(.month, from: date)
-        let day = tmpDate.component(.day, from: date)
-        
-        
-        print(date)
-        label.text = "\(year)年\(month)月\(day)日"
-        
-        //    タップで遷移させたい
-        let storyboard: UIStoryboard = self.storyboard!
-        let register = storyboard.instantiateViewController(withIdentifier: "register")as!ResigterViewController
-        register.dateValue = self.label.text
-        register.selectedDate = date
-        register.item = realm.object(ofType: FeelingItem.self, forPrimaryKey: label.text)
-        
-        //      消える
-        self.present(register, animated: true, completion: nil)
-        
-        performSegue(withIdentifier: "toResister", sender: FeelingItem.self)
     }
     
 }

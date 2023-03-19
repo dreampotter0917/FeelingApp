@@ -15,7 +15,7 @@
 		AC02B38329B39C7B009A4790 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC02B38129B39C7B009A4790 /* LaunchScreen.storyboard */; };
 		AC26DA1E29BD4F1A00AF8F43 /* tanosi.png in Resources */ = {isa = PBXBuildFile; fileRef = AC26DA1D29BD4F1A00AF8F43 /* tanosi.png */; };
 		AC26DA2029BD50EB00AF8F43 /* UIimageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC26DA1F29BD50EB00AF8F43 /* UIimageFile.swift */; };
-		AC552BB229B491F200EAB539 /* ResisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC552BB129B491F200EAB539 /* ResisterViewController.swift */; };
+		AC552BB229B491F200EAB539 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC552BB129B491F200EAB539 /* RegisterViewController.swift */; };
 		AC552BB729B4ED0300EAB539 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AC552BB629B4ED0300EAB539 /* Realm */; };
 		AC552BB929B4ED0300EAB539 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC552BB829B4ED0300EAB539 /* RealmSwift */; };
 		AC552BBB29B4EEC700EAB539 /* FeelingItem.File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC552BBA29B4EEC700EAB539 /* FeelingItem.File.swift */; };
@@ -34,7 +34,7 @@
 		AC02B38429B39C7B009A4790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC26DA1D29BD4F1A00AF8F43 /* tanosi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tanosi.png; sourceTree = "<group>"; };
 		AC26DA1F29BD50EB00AF8F43 /* UIimageFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIimageFile.swift; sourceTree = "<group>"; };
-		AC552BB129B491F200EAB539 /* ResisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResisterViewController.swift; sourceTree = "<group>"; };
+		AC552BB129B491F200EAB539 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		AC552BBA29B4EEC700EAB539 /* FeelingItem.File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingItem.File.swift; sourceTree = "<group>"; };
 		C9D80DB81B922FCF406DB19F /* Pods-FeelingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelingApp.release.xcconfig"; path = "Target Support Files/Pods-FeelingApp/Pods-FeelingApp.release.xcconfig"; sourceTree = "<group>"; };
 		F4E6FF3C44F86305D73901D0 /* Pods_FeelingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +95,7 @@
 				AC02B37629B39C79009A4790 /* AppDelegate.swift */,
 				AC02B37829B39C79009A4790 /* SceneDelegate.swift */,
 				AC02B37A29B39C79009A4790 /* ViewController.swift */,
-				AC552BB129B491F200EAB539 /* ResisterViewController.swift */,
+				AC552BB129B491F200EAB539 /* RegisterViewController.swift */,
 				AC552BBA29B4EEC700EAB539 /* FeelingItem.File.swift */,
 				AC02B37C29B39C79009A4790 /* Main.storyboard */,
 				AC02B37F29B39C7B009A4790 /* Assets.xcassets */,
@@ -235,7 +235,7 @@
 				AC552BBB29B4EEC700EAB539 /* FeelingItem.File.swift in Sources */,
 				AC26DA2029BD50EB00AF8F43 /* UIimageFile.swift in Sources */,
 				AC02B37929B39C79009A4790 /* SceneDelegate.swift in Sources */,
-				AC552BB229B491F200EAB539 /* ResisterViewController.swift in Sources */,
+				AC552BB229B491F200EAB539 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

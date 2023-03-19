@@ -9,9 +9,9 @@ import UIKit
 import FSCalendar
 import RealmSwift
 
-class ResigterViewController: UIViewController {
+class RegisterViewController: UIViewController {
     
-    var item: FeelingItem? = nil
+    var item: FeelingItem!
     var selectedDate : Date?
     
     @IBOutlet var saveButton: UIBarButtonItem!
@@ -20,13 +20,13 @@ class ResigterViewController: UIViewController {
     
     
     
-
-//    日付を表示
+    
+    //    日付を表示
     @IBOutlet var dateLabel:UILabel!
     var dateValue :String?
     
-//    ここから入力画面
-//    気持ちを表示
+    //    ここから入力画面
+    //    気持ちを表示
     @IBOutlet weak var feeling1button:UIButton!
     @IBOutlet weak var feeling2button:UIButton!
     @IBOutlet weak var feeling3button:UIButton!
@@ -34,7 +34,7 @@ class ResigterViewController: UIViewController {
     @IBOutlet weak var feeling5button:UIButton!
     @IBOutlet weak var feeling6button:UIButton!
     
-//    出来事を表示
+    //    出来事を表示
     @IBOutlet weak var zyugyoubutton:UIButton!
     @IBOutlet weak var baitobutton:UIButton!
     @IBOutlet weak var sakurubutton:UIButton!
@@ -76,7 +76,7 @@ class ResigterViewController: UIViewController {
     let color6 :UIColor = UIColor(red: 0/255, green: 54/255, blue: 130/255, alpha: 1.0)
     
     
-//    詳細を表示
+    //    詳細を表示
     @IBOutlet var detailTextField: UITextField!
     
     
@@ -87,7 +87,7 @@ class ResigterViewController: UIViewController {
         super.viewDidLoad()
         
         dateLabel.text = dateValue
-//
+        //
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,12 +130,12 @@ class ResigterViewController: UIViewController {
         }
     }
     
-//    キャンセルボタン
+    //    キャンセルボタン
     @IBAction func cancel(_ sender: Any){
         self.dismiss(animated: true, completion: nil)
     }
     
-//    保存したい
+    //    保存したい
     
     
     func createFeeling(item: FeelingItem){
@@ -151,17 +151,28 @@ class ResigterViewController: UIViewController {
         item.feeling = feeling
         item.dekigoto = dekigoto
         item.detail = detailTextField.text ?? ""
-        item.date = dateLabel.text ?? ""
+        
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "ja_JP")
+        df.dateStyle = .medium
+        df.timeStyle = .none
+        
+        
+        
+        item.date = df.string(from: selectedDate!)
         item.arunasi = true
         item.selectDate = selectedDate!
         createFeeling(item: item)
-        self.dismiss(animated: true, completion: nil)
+//        if let presentationController = presentationController{
+//            presentationController.delegate?.presentationControllerDidDismiss?(presentationController)
+//        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     
-
     
-//    気分ボタンを押したら透明度が変わる
+    
+    //    気分ボタンを押したら透明度が変わる
     @IBAction func feeling1buttonTapped(sender: AnyObject) {
         feeling = 0b100000
         setFeelingButtonColor()
@@ -194,123 +205,123 @@ class ResigterViewController: UIViewController {
     
     
     
-func setFeelingButtonColor(){
-    
-    if feeling & 0b100000 == 0b100000 {
-        feeling1button.backgroundColor = color1.withAlphaComponent(1.0)
-    } else {
-        feeling1button.backgroundColor = color1.withAlphaComponent(0.4)
+    func setFeelingButtonColor(){
+        
+        if feeling & 0b100000 == 0b100000 {
+            feeling1button.backgroundColor = color1.withAlphaComponent(1.0)
+        } else {
+            feeling1button.backgroundColor = color1.withAlphaComponent(0.4)
+        }
+        
+        if feeling & 0b010000 == 0b010000 {
+            feeling2button.backgroundColor = color2.withAlphaComponent(1.0)
+        } else {
+            feeling2button.backgroundColor = color2.withAlphaComponent(0.4)
+        }
+        
+        if feeling & 0b001000 == 0b001000 {
+            feeling3button.backgroundColor = color3.withAlphaComponent(1.0)
+        } else {
+            feeling3button.backgroundColor = color3.withAlphaComponent(0.4)
+        }
+        
+        if feeling & 0b000100 == 0b000100 {
+            feeling4button.backgroundColor = color4.withAlphaComponent(1.0)
+        } else {
+            feeling4button.backgroundColor = color4.withAlphaComponent(0.4)
+        }
+        
+        if feeling & 0b000010 == 0b000010 {
+            feeling5button.backgroundColor = color5.withAlphaComponent(1.0)
+        } else {
+            feeling5button.backgroundColor = color5.withAlphaComponent(0.2)
+        }
+        
+        if feeling & 0b000001 == 0b000001 {
+            feeling6button.backgroundColor = color6.withAlphaComponent(1.0)
+        } else {
+            feeling6button.backgroundColor = color6.withAlphaComponent(0.2)
+        }
     }
-    
-    if feeling & 0b010000 == 0b010000 {
-        feeling2button.backgroundColor = color2.withAlphaComponent(1.0)
-    } else {
-        feeling2button.backgroundColor = color2.withAlphaComponent(0.4)
-    }
-    
-    if feeling & 0b001000 == 0b001000 {
-        feeling3button.backgroundColor = color3.withAlphaComponent(1.0)
-    } else {
-        feeling3button.backgroundColor = color3.withAlphaComponent(0.4)
-    }
-    
-    if feeling & 0b000100 == 0b000100 {
-        feeling4button.backgroundColor = color4.withAlphaComponent(1.0)
-    } else {
-        feeling4button.backgroundColor = color4.withAlphaComponent(0.4)
-    }
-    
-    if feeling & 0b000010 == 0b000010 {
-        feeling5button.backgroundColor = color5.withAlphaComponent(1.0)
-    } else {
-        feeling5button.backgroundColor = color5.withAlphaComponent(0.2)
-    }
-    
-    if feeling & 0b000001 == 0b000001 {
-        feeling6button.backgroundColor = color6.withAlphaComponent(1.0)
-    } else {
-        feeling6button.backgroundColor = color6.withAlphaComponent(0.2)
-    }
-}
     //    出来事ボタンを押したら色が変わる
-        @IBAction func zyugyoubuttonTapped(sender: AnyObject) {
-            if isZyugyouSelected {
-                zyugyoubutton.backgroundColor = isNotSelectedColor
-                isZyugyouSelected = false
-                dekigoto &= ~0b100000
-            } else {
-                zyugyoubutton.backgroundColor = isSelectedColor
-                isZyugyouSelected = true
-                dekigoto |= 0b100000
-            }
+    @IBAction func zyugyoubuttonTapped(sender: AnyObject) {
+        if isZyugyouSelected {
+            zyugyoubutton.backgroundColor = isNotSelectedColor
+            isZyugyouSelected = false
+            dekigoto &= ~0b100000
+        } else {
+            zyugyoubutton.backgroundColor = isSelectedColor
+            isZyugyouSelected = true
+            dekigoto |= 0b100000
         }
-        
-        @IBAction func baitobuttonTapped(sender: AnyObject) {
-            if isBaitoSelected {
-                baitobutton.backgroundColor = isNotSelectedColor
-                isBaitoSelected = false
-                dekigoto &= ~0b010000
-            }
-            else {
-                baitobutton.backgroundColor = isSelectedColor
-                isBaitoSelected = true
-                dekigoto |= 0b010000
-            }
+    }
+    
+    @IBAction func baitobuttonTapped(sender: AnyObject) {
+        if isBaitoSelected {
+            baitobutton.backgroundColor = isNotSelectedColor
+            isBaitoSelected = false
+            dekigoto &= ~0b010000
         }
-
-        
-        @IBAction func sakurubuttonTapped(sender: AnyObject) {
-            if isSakuruSelected {
-                sakurubutton.backgroundColor =  isNotSelectedColor
-                isSakuruSelected = false
-                dekigoto &= ~0b001000
-            } else {
-                sakurubutton.backgroundColor = isSelectedColor
-                isSakuruSelected = true
-                dekigoto |= 0b001000
-            }
+        else {
+            baitobutton.backgroundColor = isSelectedColor
+            isBaitoSelected = true
+            dekigoto |= 0b010000
         }
-
-        
-        @IBAction func sigotobuttonTapped(sender: AnyObject) {
-            if isSigotoSelected {
-                sigotobutton.backgroundColor =  isNotSelectedColor
-                isSigotoSelected = false
-                dekigoto &= ~0b000100
-            } else {
-                sigotobutton.backgroundColor = isSelectedColor
-                isSigotoSelected = true
-                dekigoto |= 0b000100
-            }
+    }
+    
+    
+    @IBAction func sakurubuttonTapped(sender: AnyObject) {
+        if isSakuruSelected {
+            sakurubutton.backgroundColor =  isNotSelectedColor
+            isSakuruSelected = false
+            dekigoto &= ~0b001000
+        } else {
+            sakurubutton.backgroundColor = isSelectedColor
+            isSakuruSelected = true
+            dekigoto |= 0b001000
         }
-
-        
-        @IBAction func asobibuttonTapped(sender: AnyObject) {
-            if isAsobiSelected {
-                asobibutton.backgroundColor =  isNotSelectedColor
-                isAsobiSelected = false
-                dekigoto &= ~0b000010
-            }
-            else {
-                asobibutton.backgroundColor = isSelectedColor
-                isAsobiSelected = true
-                dekigoto |= 0b000010
-            }
+    }
+    
+    
+    @IBAction func sigotobuttonTapped(sender: AnyObject) {
+        if isSigotoSelected {
+            sigotobutton.backgroundColor =  isNotSelectedColor
+            isSigotoSelected = false
+            dekigoto &= ~0b000100
+        } else {
+            sigotobutton.backgroundColor = isSelectedColor
+            isSigotoSelected = true
+            dekigoto |= 0b000100
         }
-
-        
-        @IBAction func sonotabuttonTapped(sender: AnyObject) {
-            if isSonotaSelected {
-                sonotabutton.backgroundColor = isNotSelectedColor
-                isSonotaSelected = false
-                dekigoto &= ~0b000001
-            }
-            else {
-                sonotabutton.backgroundColor = isSelectedColor
-                isSonotaSelected = true
-                dekigoto |= 0b000001
-            }
+    }
+    
+    
+    @IBAction func asobibuttonTapped(sender: AnyObject) {
+        if isAsobiSelected {
+            asobibutton.backgroundColor =  isNotSelectedColor
+            isAsobiSelected = false
+            dekigoto &= ~0b000010
         }
+        else {
+            asobibutton.backgroundColor = isSelectedColor
+            isAsobiSelected = true
+            dekigoto |= 0b000010
+        }
+    }
+    
+    
+    @IBAction func sonotabuttonTapped(sender: AnyObject) {
+        if isSonotaSelected {
+            sonotabutton.backgroundColor = isNotSelectedColor
+            isSonotaSelected = false
+            dekigoto &= ~0b000001
+        }
+        else {
+            sonotabutton.backgroundColor = isSelectedColor
+            isSonotaSelected = true
+            dekigoto |= 0b000001
+        }
+    }
     
     
     

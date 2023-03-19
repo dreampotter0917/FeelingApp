@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dqU-Ri-n2Q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LTu-Po-nGM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -8,11 +8,27 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="YgC-ZR-E7m">
+            <objects>
+                <navigationController id="LTu-Po-nGM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZHC-JB-f5B">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dqU-Ri-n2Q" kind="relationship" relationship="rootViewController" id="M8n-9M-eqR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BBC-xo-SRE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-231" y="-66"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="Cq5-fq-YfB">
             <objects>
                 <viewController id="dqU-Ri-n2Q" customClass="ViewController" customModule="FeelingApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZGL-Nv-sAT">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="vc" id="ZGL-Nv-sAT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -31,20 +47,18 @@
                             <constraint firstItem="wmp-gU-ikd" firstAttribute="trailing" secondItem="xjk-Pb-Won" secondAttribute="trailing" id="ebi-Te-AnD"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <segue destination="90d-sY-50m" kind="presentation" identifier="toResister" id="HlT-rE-VkP"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="TKA-jZ-bCw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTn-yT-uxk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="658.77862595419845" y="-66.197183098591552"/>
         </scene>
-        <!--Resigter View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="gGm-KH-WBq">
             <objects>
-                <viewController storyboardIdentifier="register" id="90d-sY-50m" customClass="ResigterViewController" customModule="FeelingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="register" id="90d-sY-50m" customClass="RegisterViewController" customModule="FeelingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W3h-bv-sq0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rK-YF-ut6">
@@ -239,7 +253,7 @@
                                 </constraints>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pO-OH-Pdk">
-                                <rect key="frame" x="39" y="691.33333333333337" width="315" height="36.666666666666629"/>
+                                <rect key="frame" x="39" y="691.33333333333337" width="315" height="71.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="Hx9-p6-fe0"/>
                                     <constraint firstAttribute="width" constant="315" id="edw-yA-wBg"/>
